@@ -49,7 +49,7 @@ router.get("/dogs/:id", async (req, res) => {
 });
 
 router.post("/dogs", async (req, res) => {
-  const { name, image, height, weight, life_span } = req.body;
+  const { name, image, height, weight, life_span, temperaments } = req.body;
   try {
     const newDog = await createBreed({
       name,
@@ -57,6 +57,7 @@ router.post("/dogs", async (req, res) => {
       height,
       weight,
       life_span,
+      temperaments,
     });
     res.status(200).json(newDog);
   } catch (error) {

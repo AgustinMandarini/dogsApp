@@ -13,6 +13,7 @@ const getAllBreeds = async () => {
       height: breed.height.metric,
       weight: breed.weight.metric,
       life_span: breed.life_span,
+      temperament: breed.temperament,
     };
   });
 
