@@ -3,7 +3,7 @@ const { Dog } = require("../db");
 
 const URL = "https://api.thedogapi.com/v1/breeds/";
 
-const getBreed = async (id) => {
+const getBreedById = async (id) => {
   let breed = "";
   if (Number(id)) {
     // Si el id es convertive a numero, busca en la API
@@ -31,4 +31,4 @@ const getBreed = async (id) => {
   }
 };
 
-module.exports = getBreed;
+module.exports = getBreedById;

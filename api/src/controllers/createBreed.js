@@ -1,6 +1,6 @@
 const { Dog } = require("../db");
 
-const createDog = async ({ name, image, height, weight, life_span }) => {
+const createBreed = async ({ name, image, height, weight, life_span }) => {
   if (
     name.length &&
     typeof name === "string" &&
@@ -20,4 +20,4 @@ const createDog = async ({ name, image, height, weight, life_span }) => {
   }
 };
 
-module.exports = createDog;
+module.exports = createBreed;

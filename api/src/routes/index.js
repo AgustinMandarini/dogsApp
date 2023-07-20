@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const getAllBreeds = require("../controllers/getAllBreeds");
-const getBreed = require("../controllers/getBreed");
-const createDog = require("../controllers/createDog");
+const getBreedById = require("../controllers/getBreedById");
+const createBreed = require("../controllers/createBreed");
 const getTemperaments = require("../controllers/getTemperaments");
 const getBreedByName = require("../controllers/getBreedByName");
 // Importar todos los routers;
@@ -28,7 +28,7 @@ router.get("/dogs", async (req, res) => {
   }
 });
 
-router.get("/dogs/name?=", async (req, res) => {
+router.get("/dogs/search", async (req, res) => {
   const { name } = req.query;
   try {
     const breed = await getBreedByName(name);
@@ -41,7 +41,7 @@ router.get("/dogs/name?=", async (req, res) => {
 router.get("/dogs/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const breed = await getBreed(id);
+    const breed = await getBreedById(id);
     res.status(200).json(breed);
   } catch (error) {
     res.status(404).json({ error: error.message });
@@ -51,7 +51,13 @@ router.get("/dogs/:id", async (req, res) => {
 router.post("/dogs", async (req, res) => {
   const { name, image, height, weight, life_span } = req.body;
   try {
-    const newDog = await createDog({ name, image, height, weight, life_span });
+    const newDog = await createBreed({
+      name,
+      image,
+      height,
+      weight,
+      life_span,
+    });
     res.status(200).json(newDog);
   } catch (error) {
     res.status(400).json({ error: error.message });

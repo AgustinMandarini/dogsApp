@@ -4,18 +4,20 @@ const { Dog } = require("../db");
 const URL = "https://api.thedogapi.com/v1/breeds/search?q=";
 
 const getBreedByName = async (name) => {
-  const breedDB = await Dog.findOne({ where: { id } });
+  const breedDB = await Dog.findOne({ where: { name } });
 
   const { data } = await axios(`${URL}${name}`);
 
   const breedAPIName = {
-    id: data.id,
-    name: data.name,
+    id: data[0].id,
+    name: data[0].name,
     image:
-      "https://cdn2.thedogapi.com/images/" + data.reference_image_id + ".jpg",
-    height: data.height.metric,
-    weight: data.weight.metric,
-    life_span: data.life_span,
+      "https://cdn2.thedogapi.com/images/" +
+      data[0].reference_image_id +
+      ".jpg",
+    height: data[0].height.metric,
+    weight: data[0].weight.metric,
+    life_span: data[0].life_span,
   };
 
   if (breedDB) {
