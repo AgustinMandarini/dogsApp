@@ -4,31 +4,36 @@ const { Dog } = require("../db");
 const URL = "https://api.thedogapi.com/v1/breeds/";
 
 const getBreedById = async (id) => {
-  let breed = "";
+  let breed = null;
   if (Number(id)) {
     // Si el id es convertive a numero, busca en la API
     const { data } = await axios(`${URL}${id}`);
-    breed = {
-      id: data.id,
-      name: data.name,
-      image:
-        "https://cdn2.thedogapi.com/images/" + data.reference_image_id + ".jpg",
-      height: data.height.metric,
-      weight: data.weight.metric,
-      life_span: data.life_span,
-    };
+    console.log(data);
+
+    if (Object.keys(data).length) {
+      breed = {
+        id: data.id,
+        name: data.name,
+        image:
+          "https://cdn2.thedogapi.com/images/" +
+          data.reference_image_id +
+          ".jpg",
+        height: data.height.metric,
+        weight: data.weight.metric,
+        life_span: data.life_span,
+      };
+      return breed;
+    }
   }
-  if (!Number(id) && id.length === 35) {
+  if (!Number(id) && id.length > 30) {
     //Si el id no es convertible a numero, entonces busca en la BD
     breed = await Dog.findOne({ where: { id } });
-    breed = breed.dataValues;
+    if (breed) {
+      breed = breed.dataValues;
+      return breed;
+    }
   }
-
-  if (Object.keys(breed).length) {
-    return breed;
-  } else {
-    throw new Error("There are no breeds matching the requested ID");
-  }
+  throw new Error("There are no breeds matching the requested ID");
 };
 
 module.exports = getBreedById;

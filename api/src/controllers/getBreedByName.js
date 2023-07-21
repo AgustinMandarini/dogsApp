@@ -4,7 +4,10 @@ const { Dog } = require("../db");
 const URL = "https://api.thedogapi.com/v1/breeds/search?q=";
 
 const getBreedByName = async (name) => {
-  const breedDB = await Dog.findOne({ where: { name } });
+  const breedDB = await Dog.findOne({ where: { name: name } });
+  console.log(name);
+  console.log(Dog);
+  if (breedDB) return breedDB;
 
   const { data } = await axios(`${URL}${name}`);
 
@@ -20,10 +23,6 @@ const getBreedByName = async (name) => {
     life_span: data[0].life_span,
   };
 
-  if (breedDB) {
-    return breedDB;
-  }
-  console.log(data);
   if (Object.keys(data).length) {
     return breedAPIName;
   }
