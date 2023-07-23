@@ -18,9 +18,25 @@ const getAllBreeds = async () => {
   });
 
   const breedsDB = await Dog.findAll();
-  const breedsDBNames = breedsDB.map((breed) => breed);
 
-  return [...breedsAPINames, ...breedsDBNames];
+  const breedsTemperaments = await Promise.all(
+    breedsDB.map(async (breed) => await breed.getTemperaments())
+  );
+
+  breedsDB.forEach((breed, index) => {
+    if (breedsTemperaments[index].length) {
+      // console.log(breedsTemperaments[index]);
+      breed.dataValues.temperament = breedsTemperaments[index]
+        .map((temp) => temp.dataValues.name)
+        .join(", ");
+      // console.log(breed.dataValues.name);
+      // console.log(breed.dataValues.temperament.join(", "));
+    } else {
+      breed.dataValues.temperament = [];
+    }
+  });
+
+  return [...breedsAPINames, ...breedsDB];
 };
 
 module.exports = getAllBreeds;

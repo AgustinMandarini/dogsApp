@@ -8,7 +8,6 @@ const getBreedById = async (id) => {
   if (Number(id)) {
     // Si el id es convertive a numero, busca en la API
     const { data } = await axios(`${URL}${id}`);
-    console.log(data);
 
     if (Object.keys(data).length) {
       breed = {
@@ -28,6 +27,7 @@ const getBreedById = async (id) => {
   if (!Number(id) && id.length > 30) {
     //Si el id no es convertible a numero, entonces busca en la BD
     breed = await Dog.findOne({ where: { id } });
+
     if (breed) {
       breed = breed.dataValues;
       return breed;
