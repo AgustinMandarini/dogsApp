@@ -1,24 +1,16 @@
-import axios from "axios";
 import Card from "../Card/Card";
 import style from "./Cards.module.css";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { URL_DEV } from "../../fakeEnv";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllBreeds } from "../../redux/actions/actions";
 
 export default function Cards() {
-  const [breeds, setBreeds] = useState([]);
+  const breeds = useSelector((state) => state.breeds);
+  const dispatch = useDispatch();
 
-  const getAllBreeds = async () => {
-    try {
-      const { data } = await axios(URL_DEV);
-      if (data.length) {
-        setBreeds(data);
-      }
-    } catch (error) {
-      window.alert("There was an error while obtaining breeds from server");
-    }
-  };
   useEffect(() => {
-    getAllBreeds();
+    dispatch(getAllBreeds());
   }, []);
 
   return (

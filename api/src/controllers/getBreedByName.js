@@ -13,7 +13,7 @@ const getBreedByName = async (name) => {
     },
   });
 
-  if (breedDB) return breedDB;
+  if (breedDB) return [breedDB];
 
   const { data } = await axios(`${URL}${name}`);
 
@@ -29,7 +29,7 @@ const getBreedByName = async (name) => {
       weight: data[0].weight.metric,
       life_span: data[0].life_span,
     };
-    return breedAPIName;
+    return [breedAPIName];
   }
 
   throw new Error("There are no breeds matching the requested name");

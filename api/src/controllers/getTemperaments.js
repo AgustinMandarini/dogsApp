@@ -28,8 +28,10 @@ const getTemperaments = async () => {
 
   // Finalmente, se agregan uno por uno los temperamento a la base de datos
   allTemperaments.forEach((temp) => {
-    Temperament.create({ name: temp });
+    Temperament.findOrCreate({ where: { name: temp } });
   });
+
+  return allTemperaments;
 };
 
 module.exports = getTemperaments;

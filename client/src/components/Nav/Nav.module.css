@@ -1,0 +1,42 @@
+.navBar {
+  background-color: #b8b8ff;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @media screen and (max-width: 830px) {
+    height: 200px;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+
+.leftContainer {
+  width: 50%;
+  height: 10vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  @media screen and (max-width: 803px) {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.rightContainer {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.links {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  @media screen and (max-width: 803px) {
+    flex-direction: column;
+    justify-content: center;
+  }
+}

@@ -5,8 +5,8 @@ const getTemperaments = require("../controllers/getTemperaments");
 
 temperamentsRouter.get("", async (req, res) => {
   try {
-    await getTemperaments();
-    res.status(200).json({ response: "Bulk of temperaments created!" });
+    const allTemperaments = await getTemperaments();
+    res.status(200).json(allTemperaments);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

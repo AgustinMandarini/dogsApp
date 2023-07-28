@@ -15,7 +15,7 @@ const getAllBreeds = async () => {
       height: breed.height.metric,
       weight: breed.weight.metric,
       life_span: breed.life_span,
-      temperament: breed.temperament,
+      temperament: breed.temperament ? breed.temperament : [], // Esto es para corregir que algunas breeds vienen sin temperamento
     };
   });
 
@@ -37,6 +37,9 @@ const getAllBreeds = async () => {
       breed.dataValues.temperament = breedsTemperaments[index]
         .map((temp) => temp.dataValues.name)
         .join(", ");
+    } else {
+      // Si la raza fue creada sin temperamento o viene de la API sin el, crea un array vacio para esa propiedad
+      breed.dataValues.temperament = [];
     }
   });
 

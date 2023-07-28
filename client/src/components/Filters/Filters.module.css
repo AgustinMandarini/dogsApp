@@ -1,0 +1,24 @@
+.filtersNav {
+  width: 50%;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.filterTemperament {
+  width: 17%;
+  height: auto;
+}
+
+.filterOrigin {
+  width: 17%;
+  height: auto;
+}
+
+.sortBy {
+  width: 17%;
+  height: auto;
+}
+.resetButton {
+}
