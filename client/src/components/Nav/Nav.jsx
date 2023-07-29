@@ -1,6 +1,5 @@
 import style from "./Nav.module.css";
 import SearchBar from "../SearchBar/SearchBar";
-import Filters from "../Filters/Filters";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { ROUTES } from "../../helpers/routesPath";
@@ -27,7 +26,6 @@ export default function Navbar(props) {
           {location.pathname === ROUTES.HOME ? <SearchBar /> : null}{" "}
         </div>
       </nav>
-      <Filters />
     </>
   );
 }

@@ -7,10 +7,12 @@ import {
   sortBy,
 } from "../../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Navbar(props) {
   const dispatch = useDispatch();
+
+  const [sorted, setSorted] = useState(false);
 
   useEffect(() => {
     dispatch(getTemperaments());
@@ -21,16 +23,16 @@ export default function Navbar(props) {
     dispatch(getAllBreeds());
   };
 
+  const handleSortBy = async (event) => {
+    dispatch(sortBy(event.target.value));
+  };
+
   const handleTempFilter = (event) => {
     dispatch(filter_by_temp(event.target.value));
   };
 
   const handleOriginFilter = (event) => {
     dispatch(filter_by_origin(event.target.value));
-  };
-
-  const handleSortBy = (event) => {
-    dispatch(sortBy(event.target.value));
   };
 
   return (
@@ -47,6 +49,7 @@ export default function Navbar(props) {
         <option value="API">API</option>
       </select>
       <select className={style.sortBy} onChange={handleSortBy}>
+        <option value="Sorty by">Sort by</option>
         <option value="A-Z">A-Z</option>
         <option value="Z-A">Z-A</option>
         <option value="Lighter to Heavier">Lighter to Heavier</option>

@@ -1,4 +1,5 @@
 import Card from "../Card/Card";
+import Filters from "../Filters/Filters";
 import style from "./Cards.module.css";
 import { useEffect } from "react";
 import { URL_DEV } from "../../fakeEnv";
@@ -12,19 +13,22 @@ export default function Cards() {
   useEffect(() => {
     dispatch(getAllBreeds());
   }, []);
-
+  console.log(breeds);
   return (
-    <div className={style.cardsContainer}>
-      {breeds.map((breed) => (
-        <Card
-          key={breed.id}
-          id={breed.id}
-          image={breed.image}
-          name={breed.name}
-          weight={breed.weight}
-          temperament={breed.temperament}
-        />
-      ))}
-    </div>
+    <>
+      <Filters />
+      <div className={style.cardsContainer}>
+        {breeds.map((breed) => (
+          <Card
+            key={breed.id}
+            id={breed.id}
+            image={breed.image}
+            name={breed.name}
+            weight={breed.weight}
+            temperament={breed.temperament}
+          />
+        ))}
+      </div>
+    </>
   );
 }
