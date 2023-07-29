@@ -13,6 +13,8 @@ const initialState = {
   filter_temperaments: [],
   filter_origin: [],
   original_breeds: [],
+  tempFilterOn: false,
+  origFilterOn: false,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -38,8 +40,15 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case SORT_BY:
-      let sortedCopy = [...state.original_breeds];
-      sortedCopy.sort((a, b) => {
+      // Las variables globales tempFilterOn y origFilterOn se inicializan en false. Cada vez que el usuario activa filterByTemp
+      // la variable se modifica a true, e igualmente ocurre para filterByOrigin. De esta forma le podemos indicar a sortBY cual
+      // de los dos filtrados va a ordenar. Si ninguno de los dos filtros es activado, ordenara todas las breeds
+
+      let currFilter = [...state.original_breeds];
+      if (state.tempFilterOn) currFilter = [...state.filter_temperaments];
+      if (state.origFilterOn) currFilter = [...state.filter_origin];
+
+      currFilter.sort((a, b) => {
         if (action.payload === "A-Z") {
           return 1;
         } else if (action.payload === "Z-A") {
@@ -61,9 +70,15 @@ const rootReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        breeds: sortedCopy,
+        breeds: currFilter,
       };
     case FILTER_BY_TEMP:
+      state.tempFilterOn = true;
+      state.origFilterOn = false;
+
+      // includes matchea un substring dentro de un string. action.payload trae el substring que
+      // corresponde a una sola palabra de temperamento. includes lo busca dentro de los temperamentos
+      // existentes de las breeds que corresponden a strings con varias palabras
       if (action.payload === "All") {
         return { ...state, breeds: state.original_breeds };
       }
@@ -71,13 +86,14 @@ const rootReducer = (state = initialState, action) => {
         breed.temperament.includes(action.payload)
       );
       return {
-        // includes matchea un substring dentro de un string. action.payload trae el substring que
-        // corresponde a una sola palabra de temperamento. includes lo busca dentro de los temperamentos
-        // existentes de las breeds que corresponden a strings con varias palabras
         ...state,
         breeds: filterByTemp,
+        filter_temperaments: filterByTemp, // Guarda el primer filtrado para ser utilizado por sortBy
       };
     case FILTER_BY_ORIGIN:
+      state.tempFilterOn = false;
+      state.origFilterOn = true;
+
       // Aplicando la misma logica que en el back con la ruta GET /dogs/:id, si el id recibido (que es un string)
       // es convertible a un int con la funcion Number, entonces su origen es de la API. Si no puede ser
       // convertido a numero, es porque tiene un id generado por la base de datos, y entonce ese es su origen.
@@ -91,6 +107,7 @@ const rootReducer = (state = initialState, action) => {
         return {
           ...state,
           breeds: filterByAPI,
+          filter_origin: filterByAPI, // Guarda el primer filtrado para ser utilizado por sortBy
         };
       }
       if (action.payload === "Created by User") {
@@ -100,6 +117,7 @@ const rootReducer = (state = initialState, action) => {
         return {
           ...state,
           breeds: filterByDatabase,
+          filter_origin: filterByDatabase, // Guarda el primer filtrado para ser utilizado por sortBy
         };
       }
       break;
