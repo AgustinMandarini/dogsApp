@@ -10,7 +10,7 @@ export default function Card({ id, name, image, weight, temperament }) {
         </div>
       </Link>
       <img className={style.img} src={image} alt="" />
-      <div>{weight}</div>
+      <div>{weight} kg</div>
       <div>{temperament}</div>
     </div>
   );

@@ -13,7 +13,7 @@ export default function Cards() {
   useEffect(() => {
     dispatch(getAllBreeds());
   }, []);
-  console.log(breeds);
+
   return (
     <>
       <Filters />

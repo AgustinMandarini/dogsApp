@@ -31,7 +31,7 @@ const getTemperaments = async () => {
     Temperament.findOrCreate({ where: { name: temp } });
   });
 
-  return allTemperaments;
+  return allTemperaments.sort();
 };
 
 module.exports = getTemperaments;

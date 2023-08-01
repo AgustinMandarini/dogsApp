@@ -8,6 +8,18 @@ const getAllBreeds = async () => {
 
   // Obtiene todos los perros de la API
   const breedsAPINames = data.map((breed) => {
+    // Separa los valores de peso max y min que son string, los pasa a numeros y calcula el promedio
+    // avgWeight solo sera utilizada por el fron para los filtros, pero no se renderizara
+    let avgWeight = "Not specified";
+
+    if (breed.weight.imperial.split(" - ").length === 1) {
+      avgWeight = Number(breed.weight.metric.split(" - ")[0]);
+    } else {
+      avgWeight =
+        (Number(breed.weight.metric.split(" - ")[0]) +
+          Number(breed.weight.metric.split(" - ")[1])) /
+        2;
+    }
     return {
       id: breed.id,
       name: breed.name,
@@ -15,6 +27,7 @@ const getAllBreeds = async () => {
       height: breed.height.metric,
       weight: breed.weight.metric,
       life_span: breed.life_span,
+      avgWeight: avgWeight,
       temperament: breed.temperament ? breed.temperament : [], // Esto es para corregir que algunas breeds vienen sin temperamento
     };
   });
@@ -29,10 +42,16 @@ const getAllBreeds = async () => {
   );
 
   // Crea una nueva propiedad "temperament" donde guarda un string que es una lista de cada uno de esos temperamentos
-  // Los temperamentos son guardados inicialmente como un array de strings, en la ruta POST /dogs
-  // Aqui, iteramos sobre cada uno de los perros/breeds y utilizamos el index para acceder a cada array de temperamentos
-  // Finalemnte, transformamos ese array en string para que quede exactamente con el mismo formato que devuelve la API
+  // Como los temperamentos son guardados inicialmente como un array de strings en la ruta POST /dogs, es por eso que
+  // aqui iteramos sobre cada uno de los perros/breeds y utilizamos el index para acceder a cada array de temperamentos
+  // Finalemnte transformamos ese array en string para que quede exactamente con el mismo formato que devuelve la API
   breedsDB.forEach((breed, index) => {
+    // Separa los valores de peso max y min que son string, los pasa a numeros y calcula el promedio
+    // avgWeight solo sera utilizada por el fron para los filtros, pero no se renderizara
+    breed.dataValues.avgWeight =
+      (Number(breed.weight.split(" - ")[0]) +
+        Number(breed.weight.split(" - ")[1])) /
+      2;
     if (breedsTemperaments[index].length) {
       breed.dataValues.temperament = breedsTemperaments[index]
         .map((temp) => temp.dataValues.name)

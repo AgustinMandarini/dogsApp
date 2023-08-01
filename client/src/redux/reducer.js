@@ -53,16 +53,10 @@ const rootReducer = (state = initialState, action) => {
           return 1;
         } else if (action.payload === "Z-A") {
           return -1;
-          // } else if (action.payload === "Lighter to Heavier") {
-          //   let weightAvg1 =
-          //     (Number(a.weight.split(" - ")[0]) +
-          //       Number(a.weight.split(" - ")[1])) /
-          //     2;
-          //   let weightAvg2 =
-          //     (Number(b.weight.split(" - ")[0]) +
-          //       Number(b.weight.split(" - ")[1])) /
-          //     2;
-          //   return weightAvg1 - weightAvg2;
+        } else if (action.payload === "Lighter to Heavier") {
+          return a.avgWeight - b.avgWeight;
+        } else if (action.payload === "Heavier to Lighter") {
+          return b.avgWeight - a.avgWeight;
         } else {
           return 0;
         }
