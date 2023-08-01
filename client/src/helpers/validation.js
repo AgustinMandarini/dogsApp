@@ -77,6 +77,16 @@ const validation = (userData) => {
     errors.max_life_span = "Max cannot be lower or equal to min";
   }
 
+  // La funcion some devuelve true si algun temp se encuentra duplicado en el array temperaments
+
+  if (
+    userData.temperaments.some((temp, index) => {
+      return userData.temperaments.indexOf(temp) !== index;
+    })
+  ) {
+    errors.temperaments = "Cannot have duplicated temperaments";
+  }
+
   return errors;
 };
 

@@ -38,15 +38,26 @@ const NewBreedForm = (props) => {
     const property = event.target.name;
     const value = event.target.value;
 
+    const updatedTemps = [...userData.temperaments];
+
+    // Si el usuario selecciona un temperamento, y si este no es existente, agrega uno nuevo
+    if (event.target.name === "temperaments") {
+      if (!updatedTemps.includes(value)) {
+        updatedTemps.push(value);
+      }
+    }
+
     setUserData({
       ...userData,
       [property]: value,
+      temperaments: updatedTemps,
     });
 
     setErrors(
       validation({
         ...userData,
         [property]: value,
+        temperaments: updatedTemps,
       })
     );
   };
@@ -195,6 +206,7 @@ const NewBreedForm = (props) => {
               className={
                 errors.temperaments ? style.inputInvalid : style.inputValid
               }
+              name="temperaments"
             >
               {allTemperaments.map((temp) => {
                 return <option value={temp}>{temp}</option>;
