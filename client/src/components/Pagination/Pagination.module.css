@@ -1,0 +1,11 @@
+.pageContainers {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pageNumber {
+  margin: 2px 2px 2px 2px;
+  border: 2px solid rgb(0, 255, 251);
+}

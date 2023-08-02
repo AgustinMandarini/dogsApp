@@ -20,6 +20,7 @@ const getBreedById = async (id) => {
         height: data.height.metric,
         weight: data.weight.metric,
         life_span: data.life_span,
+        temperament: data.temperament,
       };
       return breed;
     }
@@ -28,9 +29,15 @@ const getBreedById = async (id) => {
     //Si el id no es convertible a numero, entonces busca en la BD
     breed = await Dog.findOne({ where: { id } });
 
+    // Busca los temperamentos en la tabla intermedia para devolver al front un objeto breed que incluya
+    // tambien los temperamentos
+    temperament = (await breed.getTemperaments()).map((temp) => {
+      return temp.dataValues.name;
+    });
+
     if (breed) {
       breed = breed.dataValues;
-      return breed;
+      return { ...breed, temperament: temperament.join(", ") };
     }
   }
   throw new Error("There are no breeds matching the requested ID");
