@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getTemperaments } from "../../redux/actions/actions";
+import createNewBreed from "../../helpers/createNewBreed";
 import style from "./NewBreedForm.module.css";
 import validation from "../../helpers/validation.js";
 
@@ -63,10 +64,16 @@ const NewBreedForm = (props) => {
   };
 
   const handleSubmit = (event) => {
-    // event.preventDefault();
-    // event.nativeEvent.submitter.name === "loginButton"
-    //   ? props.login(userData)
-    //   : props.loginAsGuest();
+    event.preventDefault();
+
+    const newBreed = createNewBreed({
+      name: userData.name,
+      image: "userData.image",
+      height: `${userData.min_height} - ${userData.max_height}`,
+      weight: `${userData.min_weight} - ${userData.max_weight}`,
+      life_span: `${userData.min_life_span} - ${userData.max_life_span}`,
+      temperaments: userData.temperaments,
+    });
   };
 
   return (

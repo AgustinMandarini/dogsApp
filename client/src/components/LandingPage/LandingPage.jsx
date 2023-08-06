@@ -1,22 +1,27 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../helpers/routesPath";
 import style from "./LandingPage.module.css";
 
 const LandingPage = (props) => {
+  const navigate = useNavigate();
   return (
     <div className={style.background}>
       <div className={style.welcomeContainer}>
         <div className={style.welcome}>
           <div className={style.title}>
-            <h1>WELLCOME TO DOG'S BREEDS SITE</h1>
-            <h3>
-              Find between 256 different dog's breeds or add you personal ones
-              to your database!
+            <h1 className={style.landingTitle}>WELLCOME TO DOOGYPEDIA SITE!</h1>
+            <h3 className={style.subTitle}>
+              Find more than 254 different dog's breeds with complete
+              information about them. Create and add you own personal breeds to
+              your database
             </h3>
+            <button
+              className={style.landingButton}
+              onClick={() => navigate(ROUTES.HOME)}
+            >
+              ENTER
+            </button>
           </div>
-          <h2>
-            <Link to={ROUTES.HOME}>ENTER</Link>
-          </h2>
         </div>
       </div>
     </div>

@@ -11,12 +11,19 @@ export default function Navbar(props) {
     <>
       <nav className={style.navBar}>
         <div className={style.leftContainer}>
-          <img src="/img/navLogo.png" alt="Breed's Logo" />
+          <Link to={ROUTES.HOME}>
+            <div className={style.logoContainer}></div>
+            <img
+              className={style.navLogo}
+              src="/img/navLogo.png"
+              alt="Breed's Logo"
+            />
+          </Link>
           <div className={style.links}>
-            <Link to={ROUTES.HOME}>
+            <Link to={ROUTES.HOME} className={style.navSpan}>
               <span>HOME</span>
             </Link>
-            <Link to={ROUTES.NEW_BREED}>
+            <Link to={ROUTES.NEW_BREED} className={style.navSpan}>
               <span>CREATE NEW BREED</span>
             </Link>
           </div>

@@ -1,6 +1,7 @@
 .navBar {
-  background-color: #b8b8ff;
+  background-color: var(--button-bg-color);
   width: 100%;
+  height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,7 +26,7 @@
 }
 
 .rightContainer {
-  width: 50%;
+  width: 60%;
   display: flex;
   justify-content: center;
 }
@@ -39,4 +40,19 @@
     flex-direction: column;
     justify-content: center;
   }
+}
+.navLogo {
+  width: 250px;
+  height: auto;
+}
+.navSpan {
+  color: var(--border-color);
+  font-size: 20px;
+  font-weight: 500;
+  @media screen and (max-width: 750px) {
+    width: 50%;
+  }
+}
+a {
+  text-decoration: none;
 }

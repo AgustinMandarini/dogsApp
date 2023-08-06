@@ -15,15 +15,18 @@ const SearchBar = () => {
   };
 
   return (
-    <div>
+    <div className={style.searchbarContainer}>
       <input
-        className={style.input}
+        className={style.searchbarInput}
         type="search"
         value={name}
         onChange={handleInputChange}
       />
 
-      <button className={style.button} onClick={(event) => onSearch(name)}>
+      <button
+        className={style.searchButton}
+        onClick={(event) => onSearch(name)}
+      >
         Search
       </button>
     </div>
