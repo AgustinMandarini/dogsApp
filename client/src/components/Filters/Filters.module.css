@@ -1,24 +1,41 @@
 .filtersNav {
-  width: 50%;
+  background-color: var(--bg-filters);
+  width: 100%;
   height: auto;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
 }
 
-.filterTemperament {
-  width: 17%;
-  height: auto;
+.filterContainer {
+  width: 70%;
+  padding: 7px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-.filterOrigin {
-  width: 17%;
-  height: auto;
-}
-
+/* Estilos para los elementos de filtrado */
+.filterTemperament,
+.filterOrigin,
 .sortBy {
+  border: 3px solid var(--border-color);
   width: 17%;
+  font-family: inherit;
   height: auto;
 }
 .resetButton {
+  width: 60px;
+  height: 35px;
+  /* margin: 0px 20px 0px 20px; */
+  border-radius: 20px;
+  border: 3px solid var(--border-color);
+  background-color: var(--bg-generic);
+  cursor: pointer;
+}
+
+.resetButton:hover {
+  border: 3px solid var(--bg-generic);
+  background-color: var(--border-color);
+  color: white;
 }

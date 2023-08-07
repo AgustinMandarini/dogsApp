@@ -37,27 +37,29 @@ export default function Navbar(props) {
 
   return (
     <nav className={style.filtersNav}>
-      <select className={style.filterTemperament} onChange={handleTempFilter}>
-        <option value="All">All</option>
-        {temperaments.map((temp) => {
-          return <option value={temp}>{temp}</option>;
-        })}
-      </select>
-      <select className={style.filterOrigin} onChange={handleOriginFilter}>
-        <option value="All">All</option>
-        <option value="Created by User">Created by User</option>
-        <option value="API">API</option>
-      </select>
-      <select className={style.sortBy} onChange={handleSortBy}>
-        <option value="Sorty by">Sort by</option>
-        <option value="A-Z">A-Z</option>
-        <option value="Z-A">Z-A</option>
-        <option value="Lighter to Heavier">Lighter to Heavier</option>
-        <option value="Heavier to Lighter">Heavier to Lighter</option>
-      </select>
-      <button className={style.resetButton} onClick={onClick}>
-        Reset
-      </button>
+      <div className={style.filterContainer}>
+        <select className={style.filterTemperament} onChange={handleTempFilter}>
+          <option value="All">All</option>
+          {temperaments.map((temp) => {
+            return <option value={temp}>{temp}</option>;
+          })}
+        </select>
+        <select className={style.filterOrigin} onChange={handleOriginFilter}>
+          <option value="All">All</option>
+          <option value="Created by User">Created by User</option>
+          <option value="API">API</option>
+        </select>
+        <select className={style.sortBy} onChange={handleSortBy}>
+          <option value="Sorty by">Sort by</option>
+          <option value="A-Z">A-Z</option>
+          <option value="Z-A">Z-A</option>
+          <option value="Lighter to Heavier">Lighter to Heavier</option>
+          <option value="Heavier to Lighter">Heavier to Lighter</option>
+        </select>
+        <button className={style.resetButton} onClick={onClick}>
+          Reset
+        </button>
+      </div>
     </nav>
   );
 }

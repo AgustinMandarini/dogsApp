@@ -1,6 +1,7 @@
 :root {
   --button-bg-color: #eae0d5;
-  --bg-color: white;
+  --bg-generic: white;
+  --bg-filters: #9b8d9c;
   --border-color: #22333b;
 }
 

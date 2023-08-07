@@ -12,7 +12,6 @@ export default function Navbar(props) {
       <nav className={style.navBar}>
         <div className={style.leftContainer}>
           <Link to={ROUTES.HOME}>
-            <div className={style.logoContainer}></div>
             <img
               className={style.navLogo}
               src="/img/navLogo.png"

@@ -42,8 +42,9 @@
   }
 }
 .navLogo {
-  width: 250px;
+  width: 130px;
   height: auto;
+  margin: 20px;
 }
 .navSpan {
   color: var(--border-color);

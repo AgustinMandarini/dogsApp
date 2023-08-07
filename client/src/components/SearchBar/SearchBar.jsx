@@ -18,6 +18,7 @@ const SearchBar = () => {
     <div className={style.searchbarContainer}>
       <input
         className={style.searchbarInput}
+        placeholder="Search Golden Retriever, Bulldog, etc..."
         type="search"
         value={name}
         onChange={handleInputChange}

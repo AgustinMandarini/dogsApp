@@ -10,8 +10,8 @@
   border: 3px solid var(--border-color);
   border-radius: 20px;
   outline: none;
-  background-color: var(--button-bg-color);
-  font-size: 20px;
+  background-color: var(--bg-generic);
+  font-size: 17px;
 }
 .searchButton {
   width: 80px;
@@ -19,13 +19,13 @@
   /* margin: 0px 20px 0px 20px; */
   border-radius: 20px;
   border: 3px solid var(--border-color);
-  background-color: var(--bg-color);
+  background-color: var(--bg-generic);
   font-size: medium;
   cursor: pointer;
 }
 
 .searchButton:hover {
-  border: 3px solid var(--bg-color);
+  border: 3px solid var(--bg-generic);
   background-color: var(--border-color);
   color: white;
 }
