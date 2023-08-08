@@ -30,7 +30,7 @@ const validation = (userData) => {
   }
 
   if (!parsed_min_height) {
-    errors.min_height = "Must provide a min height.";
+    errors.min_height = "Must provide a min height";
   } else if (parsed_min_height < MIN_HEIGHT) {
     errors.min_height = `Height cannot be less than ${MIN_HEIGHT}`;
   } else if (parsed_min_height > parsed_max_height) {
@@ -38,7 +38,7 @@ const validation = (userData) => {
   }
 
   if (!parsed_max_height) {
-    errors.max_height = "Must provide a max height.";
+    errors.max_height = "Must provide a max height";
   } else if (parsed_max_height > MAX_HEIGHT) {
     errors.max_height = `Height cannot be more than ${MAX_HEIGHT}`;
   } else if (parsed_max_height < parsed_min_height) {
@@ -46,7 +46,7 @@ const validation = (userData) => {
   }
 
   if (!parsed_min_weight) {
-    errors.min_weight = "Must provide a min weight.";
+    errors.min_weight = "Must provide a min weight";
   } else if (parsed_min_weight < MIN_WEIGHT) {
     errors.min_weight = `Weight cannot be less than ${MIN_WEIGHT}`;
   } else if (parsed_min_weight >= parsed_max_weight) {
@@ -54,7 +54,7 @@ const validation = (userData) => {
   }
 
   if (!parsed_max_weight) {
-    errors.max_weight = "Must provide a max weight.";
+    errors.max_weight = "Must provide a max weight";
   } else if (parsed_max_weight > MAX_WEIGHT) {
     errors.max_weight = `Weight cannot be more than ${MAX_WEIGHT}`;
   } else if (parsed_max_weight <= parsed_min_weight) {
@@ -62,7 +62,7 @@ const validation = (userData) => {
   }
 
   if (!parsed_min_life_span) {
-    errors.min_life_span = "Must provide a min life_span.";
+    errors.min_life_span = "Must provide a min life_span";
   } else if (parsed_min_life_span < MIN_LIFE_SPAN) {
     errors.min_life_span = `life_span cannot be less than ${MIN_LIFE_SPAN}`;
   } else if (parsed_min_life_span >= parsed_max_life_span) {
@@ -70,7 +70,7 @@ const validation = (userData) => {
   }
 
   if (!parsed_max_life_span) {
-    errors.max_life_span = "Must provide a max life_span.";
+    errors.max_life_span = "Must provide a max life_span";
   } else if (parsed_max_life_span > MAX_LIFE_SPAN) {
     errors.max_life_span = `life_span cannot be more than ${MAX_LIFE_SPAN}`;
   } else if (parsed_max_life_span <= parsed_min_life_span) {

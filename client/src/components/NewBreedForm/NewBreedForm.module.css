@@ -12,10 +12,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: -100px;
   width: 50vw;
-  height: 70vh;
-  background-color: rgba(0, 0, 0, 0.7);
-  box-shadow: 0px 0px 45px 24px var(--border-color);
+  height: 75vh;
+  background-color: var(--card-border-color);
+  border: 3px solid black;
+  box-shadow: 0px 0px 0px 6px var(--card-border-color);
   border-radius: 5px;
 
   @media screen and (max-width: 700px) {
@@ -23,52 +25,61 @@
   }
 }
 
+.createNewBreedTitle {
+  font-family: inherit;
+  font-size: 20px;
+  color: var(--border-color);
+}
+
 .inputContainer {
   /* background-color: red;
     border: 3px solid green; */
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   width: 80%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-self: center;
   justify-self: center;
-  @media screen and (max-width: 700px) {
-    margin-bottom: 40px;
-  }
 }
 
 .inputPairsContainer {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   width: 80%;
   display: flex;
   flex-direction: row;
   align-self: center;
   justify-self: center;
-  @media screen and (max-width: 700px) {
-    margin-bottom: 40px;
-  }
+}
+.labelInputSpan {
+  width: 45%;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-self: center;
 }
 
 .label {
   color: var(--border-color);
-  padding-bottom: 10px;
-  font-size: 25px;
+  font-size: 15px;
   font-weight: 700;
 }
 
 .inputValid {
+  text-align: center;
   font-size: 17px;
   width: 100%;
-  height: 40px;
+  height: 30px;
   border-radius: 5px;
   border: 3px solid rgb(14, 222, 94);
   align-self: flex-start;
 }
 
 .inputInvalid {
+  text-align: center;
   font-size: 17px;
   width: 100%;
-  height: 40px;
+  height: 30px;
   border-radius: 5px;
   border: 3px solid red;
   align-self: flex-start;
@@ -82,26 +93,14 @@
 
 .button {
   align-self: center;
-  width: 80px;
+  width: 200px;
   height: 35px;
   /* margin: 0px 20px 0px 20px; */
   border-radius: 20px;
   border: 3px solid var(--border-color);
   background-color: var(--button-bg-color);
-  font-family: monospace;
-  cursor: pointer;
-}
-
-.guestButton {
-  align-self: center;
-  margin-top: 5vh;
-  width: auto;
-  height: auto;
-  /* margin: 0px 20px 0px 20px; */
-  border-radius: 20px;
-  border: 3px solid var(--border-color);
-  background-color: var(--button-bg-color);
-  font-family: monospace;
+  font-family: inherit;
+  font-weight: 700;
   cursor: pointer;
 }
 

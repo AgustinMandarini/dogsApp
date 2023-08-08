@@ -62,6 +62,18 @@ const getAllBreeds = async () => {
     }
   });
 
+  breedsDB.sort((a, b) => {
+    const nameA = a.dataValues.name.toLowerCase();
+    const nameB = b.dataValues.name.toLowerCase();
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    return 0;
+  });
+
   return [...breedsAPINames, ...breedsDB];
 };
 

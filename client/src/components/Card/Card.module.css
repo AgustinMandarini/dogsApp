@@ -1,12 +1,41 @@
 .container {
-  height: 100%;
-  border: 3px solid black;
+  width: 300px;
+  height: auto;
+  border: 3px solid var(--card-border-color);
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-.img {
-  border-top-left-radius: inherit;
-  border-top-right-radius: inherit;
+.breedName {
   width: 100%;
+  height: 15%;
+  font-size: 10px;
+  text-decoration: none;
+  color: var(--card-border-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgContainer {
+  width: 100%;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img {
+  width: 100%; /* Asegura que la imagen llene horizontalmente el contenedor */
+  height: 100%; /* Mantiene la proporción original */
+  object-fit: cover; /* Ajusta la imagen para cubrir todo el contenedor */
+  object-position: center center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.descrContainer {
+  width: 80%;
+  height: 40%;
+  margin-bottom: 10px;
 }

@@ -14,7 +14,7 @@ export default function Cards() {
   // Estos estados sirven para el paginado
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [breedsPerPage, setBreedsPerPage] = useState(8);
+  const [breedsPerPage] = useState(8);
 
   useEffect(() => {
     setLoading(true);

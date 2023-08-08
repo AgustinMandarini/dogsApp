@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getTemperaments } from "../../redux/actions/actions";
+import { ROUTES } from "../../helpers/routesPath";
 import createNewBreed from "../../helpers/createNewBreed";
 import style from "./NewBreedForm.module.css";
 import validation from "../../helpers/validation.js";
 
 const NewBreedForm = (props) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getTemperaments());
@@ -74,12 +77,16 @@ const NewBreedForm = (props) => {
       life_span: `${userData.min_life_span} - ${userData.max_life_span}`,
       temperaments: userData.temperaments,
     });
+    newBreed.then((data) => {
+      if (data) navigate(ROUTES.HOME);
+    });
   };
 
   return (
     <div className={style.formContainer}>
       <form onSubmit={handleSubmit}>
         <div className={style.form}>
+          <h1 className={style.createNewBreedTitle}>Create New Breed</h1>
           <div className={style.inputContainer}>
             <label className={style.label} htmlFor="name">
               Breed's Name:
@@ -98,110 +105,121 @@ const NewBreedForm = (props) => {
           </div>
 
           <div className={style.inputPairsContainer}>
-            <label className={style.label} htmlFor="min_height">
-              Min Height
-            </label>
-            <input
-              onChange={handleChange}
-              className={
-                errors.min_height ? style.inputInvalid : style.inputValid
-              }
-              type="number"
-              name="min_height"
-              placeholder="0"
-              value={userData.min_height}
-            />
-            <span className={style.errorSpan}>
-              {errors.min_height ? errors.min_height : null}
-            </span>
+            <div className={style.labelInputSpan}>
+              <label className={style.label} htmlFor="min_height">
+                Min Height
+              </label>
 
-            <label className={style.label} htmlFor="max_height">
-              Max Height
-            </label>
-            <input
-              onChange={handleChange}
-              className={
-                errors.max_height ? style.inputInvalid : style.inputValid
-              }
-              type="number"
-              name="max_height"
-              placeholder="0"
-              value={userData.max_height}
-            />
-            <span className={style.errorSpan}>
-              {errors.max_height ? errors.max_height : null}
-            </span>
+              <input
+                onChange={handleChange}
+                className={
+                  errors.min_height ? style.inputInvalid : style.inputValid
+                }
+                type="number"
+                name="min_height"
+                placeholder="0"
+                value={userData.min_height}
+              />
+              <span className={style.errorSpan}>
+                {errors.min_height ? errors.min_height : null}
+              </span>
+            </div>
+            <div className={style.labelInputSpan}>
+              <label className={style.label} htmlFor="max_height">
+                Max Height
+              </label>
+              <input
+                onChange={handleChange}
+                className={
+                  errors.max_height ? style.inputInvalid : style.inputValid
+                }
+                type="number"
+                name="max_height"
+                placeholder="0"
+                value={userData.max_height}
+              />
+              <span className={style.errorSpan}>
+                {errors.max_height ? errors.max_height : null}
+              </span>
+            </div>
           </div>
 
           <div className={style.inputPairsContainer}>
-            <label className={style.label} htmlFor="min_weight">
-              Min Weight
-            </label>
-            <input
-              onChange={handleChange}
-              className={
-                errors.min_weight ? style.inputInvalid : style.inputValid
-              }
-              type="number"
-              name="min_weight"
-              placeholder="0"
-              value={userData.min_weight}
-            />
-            <span className={style.errorSpan}>
-              {errors.min_weight ? errors.min_weight : null}
-            </span>
-
-            <label className={style.label} htmlFor="max_weight">
-              Max Weight
-            </label>
-            <input
-              onChange={handleChange}
-              className={
-                errors.max_weight ? style.inputInvalid : style.inputValid
-              }
-              type="number"
-              name="max_weight"
-              placeholder="0"
-              value={userData.max_weight}
-            />
-            <span className={style.errorSpan}>
-              {errors.max_weight ? errors.max_weight : null}
-            </span>
+            <div className={style.labelInputSpan}>
+              <label className={style.label} htmlFor="min_weight">
+                Min Weight
+              </label>
+              <input
+                onChange={handleChange}
+                className={
+                  errors.min_weight ? style.inputInvalid : style.inputValid
+                }
+                type="number"
+                name="min_weight"
+                placeholder="0"
+                value={userData.min_weight}
+              />
+              <span className={style.errorSpan}>
+                {errors.min_weight ? errors.min_weight : null}
+              </span>
+            </div>
+            <div className={style.labelInputSpan}>
+              <label className={style.label} htmlFor="max_weight">
+                Max Weight
+              </label>
+              <input
+                onChange={handleChange}
+                className={
+                  errors.max_weight ? style.inputInvalid : style.inputValid
+                }
+                type="number"
+                name="max_weight"
+                placeholder="0"
+                value={userData.max_weight}
+              />
+              <span className={style.errorSpan}>
+                {errors.max_weight ? errors.max_weight : null}
+              </span>
+            </div>
           </div>
 
           <div className={style.inputPairsContainer}>
-            <label className={style.label} htmlFor="min_life_span">
-              Min Life Span
-            </label>
-            <input
-              onChange={handleChange}
-              className={
-                errors.min_life_span ? style.inputInvalid : style.inputValid
-              }
-              type="number"
-              name="min_life_span"
-              placeholder="0"
-              value={userData.min_life_span}
-            />
-            <span className={style.errorSpan}>
-              {errors.min_life_span ? errors.min_life_span : null}
-            </span>
-            <label className={style.label} htmlFor="max_life_span">
-              Max Life Span
-            </label>
-            <input
-              onChange={handleChange}
-              className={
-                errors.max_life_span ? style.inputInvalid : style.inputValid
-              }
-              type="number"
-              name="max_life_span"
-              placeholder="0"
-              value={userData.max_life_span}
-            />
-            <span className={style.errorSpan}>
-              {errors.max_life_span ? errors.max_life_span : null}
-            </span>
+            <div className={style.labelInputSpan}>
+              <label className={style.label} htmlFor="min_life_span">
+                Min Life Span
+              </label>
+              <input
+                onChange={handleChange}
+                className={
+                  errors.min_life_span ? style.inputInvalid : style.inputValid
+                }
+                type="number"
+                name="min_life_span"
+                placeholder="0"
+                value={userData.min_life_span}
+              />
+              <span className={style.errorSpan}>
+                {errors.min_life_span ? errors.min_life_span : null}
+              </span>
+            </div>
+            <div className={style.labelInputSpan}>
+              <label className={style.label} htmlFor="max_life_span">
+                Max Life Span
+              </label>
+              <input
+                onChange={handleChange}
+                className={
+                  errors.max_life_span ? style.inputInvalid : style.inputValid
+                }
+                type="number"
+                name="max_life_span"
+                placeholder="0"
+                value={userData.max_life_span}
+              />
+              <span className={style.errorSpan}>
+                {errors.max_life_span ? errors.max_life_span : null}
+              </span>
+            </div>
           </div>
 
           <div className={style.inputContainer}>
@@ -225,7 +243,7 @@ const NewBreedForm = (props) => {
           </div>
 
           <button className={style.button} name="createNewBreedButton">
-            Create New Breed
+            CREATE NEW BREED
           </button>
         </div>
       </form>
