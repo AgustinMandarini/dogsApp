@@ -66,10 +66,10 @@ const NewBreedForm = (props) => {
     );
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const newBreed = createNewBreed({
+    await createNewBreed({
       name: userData.name,
       image: "userData.image",
       height: `${userData.min_height} - ${userData.max_height}`,
@@ -77,9 +77,15 @@ const NewBreedForm = (props) => {
       life_span: `${userData.min_life_span} - ${userData.max_life_span}`,
       temperaments: userData.temperaments,
     });
-    newBreed.then((data) => {
-      if (data) navigate(ROUTES.HOME);
-    });
+
+    if (Object.keys(errors).length > 0) {
+      // Esta linea envia el error del front, pero por requisito,
+      // se omite para que envie el error desde el back.
+      // window.alert(Object.values(errors)[0]);
+      return;
+    }
+    window.alert("Breed succesfully created!");
+    navigate(ROUTES.HOME);
   };
 
   return (

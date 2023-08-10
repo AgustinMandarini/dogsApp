@@ -1,6 +1,7 @@
 .detailContainer {
   width: 100%;
   height: auto;
+
   margin-top: 50px;
   display: flex;
   justify-content: center;
@@ -9,14 +10,13 @@
 
 .detailContent {
   width: 60%;
+  height: 450px;
   padding: 30px;
-  border-radius: 30px;
+  border-radius: 5px;
   color: rgb(1, 0, 37);
-  text-shadow: -2px 1px 3px var(--button-bg-color);
-  /* background-color: rgba(0, 188, 110, 0.335); */
-  background-color: var(--border-color);
-  /* box-shadow: 0px 0px 45px 24px rgba(0, 188, 110, 0.335); */
-  box-shadow: 0px 0px 45px 24px var(--border-color);
+  border: 3px solid black;
+  box-shadow: 0px 0px 0px 6px var(--card-border-color);
+  background-color: var(--card-border-color);
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -34,7 +34,7 @@
 .img {
   width: 50%;
   height: auto;
-  border-radius: 100%;
+  border-radius: 10px;
   margin-right: 7%;
   border: 5px solid var(--button-bg-color);
 }

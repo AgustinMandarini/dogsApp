@@ -11,7 +11,6 @@ const Detail = (props) => {
   useEffect(() => {
     axios.get(`${URL_DEV}/dogs/${id}`).then(({ data }) => {
       if (data.name) {
-        console.log(data);
         setBreed(data);
       } else {
         window.alert("There are no breeds matching the requested ID");
@@ -29,10 +28,10 @@ const Detail = (props) => {
             Name: <span className={style.name}>{breed?.name}</span>
           </h2>
           <h2>
-            Height: <span className={style.span}>{breed?.height}</span>
+            Height: <span className={style.span}>{breed?.height} cm</span>
           </h2>
           <h2>
-            Weight: <span className={style.span}>{breed?.weight}</span>
+            Weight: <span className={style.span}>{breed?.weight} kg</span>
           </h2>
           <h2>
             Life Span: <span className={style.span}>{breed?.life_span}</span>
