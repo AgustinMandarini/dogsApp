@@ -102,10 +102,20 @@
   font-family: inherit;
   font-weight: 700;
   cursor: pointer;
+  &:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+  }
 }
 
 .button:hover {
   border: 3px solid var(--button-bg-color);
   background-color: var(--border-color);
   color: white;
+  &:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+  }
 }

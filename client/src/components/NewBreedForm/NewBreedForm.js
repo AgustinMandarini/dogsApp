@@ -77,15 +77,6 @@ const NewBreedForm = (props) => {
       life_span: `${userData.min_life_span} - ${userData.max_life_span}`,
       temperaments: userData.temperaments,
     });
-
-    if (Object.keys(errors).length > 0) {
-      // Esta linea envia el error del front, pero por requisito,
-      // se omite para que envie el error desde el back.
-      // window.alert(Object.values(errors)[0]);
-      return;
-    }
-    window.alert("Breed succesfully created!");
-    navigate(ROUTES.HOME);
   };
 
   return (
@@ -248,7 +239,11 @@ const NewBreedForm = (props) => {
             </span>
           </div>
 
-          <button className={style.button} name="createNewBreedButton">
+          <button
+            className={style.button}
+            name="createNewBreedButton"
+            disabled={Object.keys(errors).length > 0} // Si el estado errors, que es un objeto, no esta vacio, entonces deshabilita el boton
+          >
             CREATE NEW BREED
           </button>
         </div>
