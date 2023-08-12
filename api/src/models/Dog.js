@@ -14,7 +14,10 @@ module.exports = (sequelize) => {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: { msg: "There is already another breed with this name!" },
+        unique: {
+          name: "name",
+          msg: "There is already another breed with this name!",
+        },
         validate: {
           len: [1, 50],
         },

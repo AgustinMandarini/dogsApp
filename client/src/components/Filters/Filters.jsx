@@ -12,8 +12,6 @@ import { useEffect, useState } from "react";
 export default function Navbar(props) {
   const dispatch = useDispatch();
 
-  const [sorted, setSorted] = useState(false);
-
   useEffect(() => {
     dispatch(getTemperaments());
   }, []);
