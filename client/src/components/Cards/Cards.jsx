@@ -18,7 +18,6 @@ export default function Cards() {
 
   useEffect(() => {
     setLoading(true);
-    dispatch(getAllBreeds());
     setLoading(false);
   }, []);
 

@@ -5,7 +5,13 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import store from "./redux/store";
+import { getAllBreeds } from "./redux/actions/actions";
 import { Provider } from "react-redux";
+
+// Esta linea a continuacion permite traer todas las breeds SOLO UNA VEZ, cuando se inicia la aplicacion, y de esta forma lograr que los
+// filtros persistan y no se sobrescriban. Anteriormente, esta linea estaba en el useEffect del componente que renderiza, pero
+// eso hacia que cada vez que se monte el componente, las breeds se sobreescribieran.
+store.dispatch(getAllBreeds());
 
 ReactDOM.render(
   <React.StrictMode>
