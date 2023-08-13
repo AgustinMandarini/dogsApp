@@ -2,24 +2,16 @@ import Card from "../Card/Card";
 import Filters from "../Filters/Filters";
 import style from "./Cards.module.css";
 import Pagination from "../Pagination/Pagination";
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllBreeds } from "../../redux/actions/actions";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function Cards() {
   // Las razas se obtienen desde el estado global de redux "breeds"
   const breeds = useSelector((state) => state.breeds);
-  const dispatch = useDispatch();
 
   // Estos estados sirven para el paginado
-  const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [breedsPerPage] = useState(8);
-
-  useEffect(() => {
-    setLoading(true);
-    setLoading(false);
-  }, []);
 
   // Con estas variables calculamos y definimos las breeds que iran apareciendo en cada pagina
   const indexOfLastBreed = currentPage * breedsPerPage;
@@ -37,7 +29,6 @@ export default function Cards() {
       <div className={style.cardsContainer}>
         {currentBreeds.map((breed) => (
           <Card
-            loading={loading}
             key={breed.id}
             id={breed.id}
             image={breed.image}
