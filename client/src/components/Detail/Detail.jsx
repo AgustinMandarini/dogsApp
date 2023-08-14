@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import style from "./Detail.module.css";
-const REACT_APP_URL_DEV = process.env.REACT_APP_URL_DEV;
+const REACT_APP_URL_DEV = process.env.REACT_APP_URL_DEV; // react no necesita dotenv
 
 const Detail = (props) => {
   const { id } = useParams();

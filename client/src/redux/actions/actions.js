@@ -7,7 +7,7 @@ import {
   FILTER_BY_ORIGIN,
   SORT_BY,
 } from "./types";
-const REACT_APP_URL_DEV = process.env.REACT_APP_URL_DEV;
+const REACT_APP_URL_DEV = process.env.REACT_APP_URL_DEV; // react no necesita dotenv
 
 const URL = REACT_APP_URL_DEV;
 

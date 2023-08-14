@@ -1,5 +1,5 @@
 import axios from "axios";
-const REACT_APP_URL_DEV = process.env.REACT_APP_URL_DEV;
+const REACT_APP_URL_DEV = process.env.REACT_APP_URL_DEV; // react no necesita dotenv
 
 const URL = REACT_APP_URL_DEV;
 
