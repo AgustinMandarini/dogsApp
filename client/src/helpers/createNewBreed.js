@@ -1,7 +1,7 @@
 import axios from "axios";
-import { URL_DEV, URL_PROD } from "../fakeEnv";
+const REACT_APP_URL_DEV = process.env.REACT_APP_URL_DEV;
 
-const URL = URL_DEV;
+const URL = REACT_APP_URL_DEV;
 
 const createNewBreed = async ({
   name,

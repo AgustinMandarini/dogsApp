@@ -23,7 +23,10 @@ const getAllBreeds = async () => {
     return {
       id: breed.id,
       name: breed.name,
-      image: breed.image.url,
+      image:
+        "https://cdn2.thedogapi.com/images/" +
+        breed.reference_image_id +
+        ".jpg", // image: breed.image.url anteriormente funcionaba asi
       height: breed.height.metric,
       weight: breed.weight.metric,
       life_span: breed.life_span,

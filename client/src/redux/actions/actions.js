@@ -7,9 +7,9 @@ import {
   FILTER_BY_ORIGIN,
   SORT_BY,
 } from "./types";
-import { URL_DEV } from "../../fakeEnv";
+const REACT_APP_URL_DEV = process.env.REACT_APP_URL_DEV;
 
-const URL = URL_DEV;
+const URL = REACT_APP_URL_DEV;
 
 const getAllBreeds = () => {
   const endpoint = `${URL}/dogs`;
