@@ -1,7 +1,7 @@
 import axios from "axios";
-const REACT_APP_URL_DEV = process.env.REACT_APP_URL_DEV; // react no necesita dotenv
+const REACT_APP_URL_PROD = process.env.REACT_APP_URL_PROD; // react no necesita dotenv
 
-const URL = REACT_APP_URL_DEV;
+const URL = REACT_APP_URL_PROD;
 
 const createNewBreed = async ({
   name,
