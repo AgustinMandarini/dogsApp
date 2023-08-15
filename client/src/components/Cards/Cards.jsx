@@ -17,15 +17,23 @@ export default function Cards() {
   const indexOfLastBreed = currentPage * breedsPerPage;
   const indexOfFirstBreed = indexOfLastBreed - breedsPerPage;
   const currentBreeds = breeds.slice(indexOfFirstBreed, indexOfLastBreed);
+  const totalPages = Math.ceil(breeds.length / breedsPerPage);
 
   // Sera la que ejecute el cambio de pagina cada vez que se clickea en un numero del pagiando.
   // Se la pasa por props al componente paginate
   const paginate = (page) => {
-    setCurrentPage(page);
+    console.log(totalPages);
+    setCurrentPage(page % (totalPages + 1));
+    console.log(page);
   };
   return (
     <>
       <Filters />
+      <Pagination
+        totalPages={totalPages}
+        paginate={paginate}
+        currentPage={currentPage}
+      />
       <div className={style.cardsContainer}>
         {currentBreeds.map((breed) => (
           <Card
@@ -38,11 +46,6 @@ export default function Cards() {
           />
         ))}
       </div>
-      <Pagination
-        breedsPerPage={breedsPerPage}
-        totalBreeds={breeds.length}
-        paginate={paginate}
-      />
     </>
   );
 }

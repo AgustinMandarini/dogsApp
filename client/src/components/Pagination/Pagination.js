@@ -1,22 +1,20 @@
 import style from "./Pagination.module.css";
 
-const Pagination = ({ breedsPerPage, totalBreeds, paginate }) => {
-  const pageNumbers = [];
-
-  for (let i = 1; i < Math.ceil(totalBreeds / breedsPerPage); i++) {
-    pageNumbers.push(i);
-  }
-
+const Pagination = ({ paginate, currentPage, totalPages }) => {
   return (
-    <nav>
+    <nav className={style.paginationNavContainer}>
       <ul className={style.pageContainers}>
-        {pageNumbers.map((number) => (
-          <li key={number} className={style.pageNumber}>
-            <a onClick={() => paginate(number)} href="#">
-              {number}
-            </a>
-          </li>
-        ))}
+        <div
+          className={style.triangleLeft}
+          onClick={() => paginate(--currentPage)}
+        ></div>
+        <span>
+          PAGE {currentPage} OF {totalPages}
+        </span>
+        <div
+          className={style.triangleRight}
+          onClick={() => paginate(++currentPage)}
+        ></div>
       </ul>
     </nav>
   );
