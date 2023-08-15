@@ -1,4 +1,12 @@
+.paginationNavContainer {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .pageContainers {
+  width: 50%;
   list-style: none;
   display: flex;
   justify-content: center;
@@ -8,4 +16,25 @@
 .pageNumber {
   margin: 2px 2px 2px 2px;
   border: 2px solid rgb(0, 255, 251);
+}
+
+.triangleLeft,
+.triangleRight {
+  border-top: 18px solid transparent;
+  border-bottom: 18px solid transparent;
+  width: 0;
+  height: 0;
+  margin: 30px auto;
+  cursor: pointer;
+}
+.triangleRight {
+  border-left: 30px solid var(--card-border-color);
+}
+.triangleLeft {
+  border-right: 30px solid var(--card-border-color);
+}
+
+.triangleLeft:hover,
+.triangleRight:hover {
+  transform: scale(1.1); /* Hace la flecha un poco más grande en hover */
 }
