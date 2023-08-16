@@ -6,10 +6,9 @@ import {
   FILTER_BY_TEMP,
   FILTER_BY_ORIGIN,
   SORT_BY,
+  SET_CURRENT_PAGE,
 } from "./types";
-const REACT_APP_URL_DEV = process.env.REACT_APP_URL_DEV;
-
-const URL = REACT_APP_URL_DEV;
+const URL = process.env.REACT_APP_URL;
 
 const getAllBreeds = () => {
   const endpoint = `${URL}/dogs`;
@@ -27,7 +26,7 @@ const getAllBreeds = () => {
 };
 
 const getBreedByName = (name) => {
-  const endpoint = `${URL}/dogs/search?name=${name}`;
+  const endpoint = `${URL}/dogs/?name=${name}`;
   return async (dispatch) => {
     try {
       const { data } = await axios.get(endpoint);
@@ -66,6 +65,10 @@ const filter_by_origin = (origin) => {
   return { type: FILTER_BY_ORIGIN, payload: origin };
 };
 
+const set_current_page = (page) => {
+  return { type: SET_CURRENT_PAGE, payload: page };
+};
+
 const sortBy = (param) => {
   return { type: SORT_BY, payload: param };
 };
@@ -76,5 +79,6 @@ export {
   getTemperaments,
   filter_by_temp,
   filter_by_origin,
+  set_current_page,
   sortBy,
 };

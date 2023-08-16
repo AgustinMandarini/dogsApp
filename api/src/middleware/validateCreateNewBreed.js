@@ -4,12 +4,9 @@ const validateCreateNewBreed = (req, res, next) => {
   if (!name || name.length === 0 || typeof name !== "string") {
     return res.status(400).json({ error: "Missing breed name" });
   }
-  if (!image || image.length === 0 || typeof image !== "string") {
-    return res.status(400).json({ error: "Missing image" });
-  }
-  console.log(height);
-  console.log(height.length);
-  console.log(height.split(" - ")[1] - height.split(" - ")[0] <= 0);
+  // if (!image || image.length === 0 || typeof image !== "string") {
+  //   return res.status(400).json({ error: "Missing image" });
+  // }
   if (
     height.includes("null") ||
     height.length === 0 ||

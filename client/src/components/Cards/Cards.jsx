@@ -3,14 +3,16 @@ import Filters from "../Filters/Filters";
 import style from "./Cards.module.css";
 import Pagination from "../Pagination/Pagination";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { set_current_page } from "../../redux/actions/actions";
 
 export default function Cards() {
+  const dispatch = useDispatch();
   // Las razas se obtienen desde el estado global de redux "breeds"
   const breeds = useSelector((state) => state.breeds);
 
   // Estos estados sirven para el paginado
-  const [currentPage, setCurrentPage] = useState(1);
+  const currentPage = useSelector((state) => state.currentPage);
   const [breedsPerPage] = useState(8);
 
   // Con estas variables calculamos y definimos las breeds que iran apareciendo en cada pagina
@@ -22,9 +24,10 @@ export default function Cards() {
   // Sera la que ejecute el cambio de pagina cada vez que se clickea en un numero del pagiando.
   // Se la pasa por props al componente paginate
   const paginate = (page) => {
-    console.log(totalPages);
-    setCurrentPage(page % (totalPages + 1));
-    console.log(page);
+    // console.log(totalPages);
+    // console.log(page);
+
+    dispatch(set_current_page(page % (totalPages + 1)));
   };
   return (
     <>

@@ -4,8 +4,9 @@ const createBreed = require("../controllers/createBreed");
 const getBreedByName = require("../controllers/getBreedByName");
 
 const getAllBreedsHandler = async (req, res) => {
+  const { name } = req.query;
   try {
-    const breeds = await getAllBreeds();
+    const breeds = await getAllBreeds(name);
     res.status(200).json(breeds);
   } catch (error) {
     if (error.message === "Error while obtaining data from API") {

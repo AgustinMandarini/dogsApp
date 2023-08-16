@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import style from "./Detail.module.css";
-const REACT_APP_URL_DEV = process.env.REACT_APP_URL_DEV;
+const REACT_APP_URL = process.env.REACT_APP_URL;
 
 const Detail = (props) => {
   const { id } = useParams();
   const [breed, setBreed] = useState([]);
 
   useEffect(() => {
-    axios.get(`${REACT_APP_URL_DEV}/dogs/${id}`).then(({ data }) => {
+    axios.get(`${REACT_APP_URL}/dogs/${id}`).then(({ data }) => {
       if (data.name) {
         setBreed(data);
       } else {
