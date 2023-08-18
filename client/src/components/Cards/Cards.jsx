@@ -38,7 +38,6 @@ export default function Cards() {
         currentPage={currentPage}
       />
       <div className={style.cardsContainer}>
-        {console.log(currentBreeds)}
         {currentBreeds.map((breed) => (
           <Card
             key={breed.id}
