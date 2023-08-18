@@ -13,6 +13,7 @@ export default function Cards() {
 
   // Estos estados sirven para el paginado
   const currentPage = useSelector((state) => state.currentPage);
+
   const [breedsPerPage] = useState(8);
 
   // Con estas variables calculamos y definimos las breeds que iran apareciendo en cada pagina
@@ -31,7 +32,7 @@ export default function Cards() {
   };
   return (
     <>
-      <Filters />
+      <Filters totalPages={totalPages} />
       <Pagination
         totalPages={totalPages}
         paginate={paginate}

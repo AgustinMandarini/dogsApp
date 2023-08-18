@@ -11,7 +11,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   margin-top: -100px;
   width: 50vw;
   height: 75vh;
@@ -24,6 +24,40 @@
     width: 80vw;
   }
 }
+.leftAndRightContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leftContainer {
+  background-color: red;
+  width: 50%;
+  /* align-self: flex-start; */
+}
+.rightContainer {
+  background-color: blue;
+  width: 50%;
+  /* align-self: flex-end; */
+}
+
+.imgContainer {
+  width: 70%;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img {
+  width: 100%; /* Asegura que la imagen llene horizontalmente el contenedor */
+  height: 100%; /* Mantiene la proporción original */
+  object-fit: cover; /* Ajusta la imagen para cubrir todo el contenedor */
+  object-position: center center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
 
 .createNewBreedTitle {
   font-family: inherit;
@@ -32,8 +66,6 @@
 }
 
 .inputContainer {
-  /* background-color: red;
-    border: 3px solid green; */
   margin-bottom: 10px;
   width: 80%;
   display: flex;

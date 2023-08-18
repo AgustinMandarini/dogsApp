@@ -10,9 +10,8 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
-export default function Navbar(props) {
+export default function Navbar() {
   const dispatch = useDispatch();
-  const currentPage = useSelector((state) => state.currentPage);
 
   useEffect(() => {
     dispatch(getTemperaments());
@@ -28,12 +27,12 @@ export default function Navbar(props) {
   };
 
   const handleTempFilter = (event) => {
-    if (currentPage > props.totalPages) dispatch(set_current_page(1));
+    dispatch(set_current_page(1));
     dispatch(filter_by_temp(event.target.value));
   };
 
   const handleOriginFilter = (event) => {
-    if (currentPage > props.totalPages) dispatch(set_current_page(1));
+    dispatch(set_current_page(1));
     dispatch(filter_by_origin(event.target.value));
   };
 

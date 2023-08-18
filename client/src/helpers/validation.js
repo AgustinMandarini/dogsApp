@@ -2,6 +2,7 @@ const validation = (userData) => {
   // Esta regex acepta todo el alfabeto may y min de la a-z, el caracter "-" y todos los caracteres
   // especiales de todos los idiomas, como ñ, acentos, y demas
   const regexName = /^[A-Za-z\u00C0-\u024F\u1E00-\u1EFF\u0300-\u036F\s\-]+$/gu;
+  const regexImage = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/;
 
   let errors = {};
 
@@ -75,6 +76,11 @@ const validation = (userData) => {
     errors.max_life_span = `life_span cannot be more than ${MAX_LIFE_SPAN}`;
   } else if (parsed_max_life_span <= parsed_min_life_span) {
     errors.max_life_span = "Max cannot be lower or equal to min";
+  }
+
+  if (!regexImage.test(userData.image)) {
+    if (!userData.image || userData.image === "") errors.image = "";
+    else errors.image = "Must provide a valid URL for image";
   }
 
   // La funcion some devuelve true si algun temp se encuentra duplicado en el array temperaments
