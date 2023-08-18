@@ -3,7 +3,7 @@ const { Dog } = require("../db");
 
 const URL = "https://api.thedogapi.com/v1/breeds";
 
-const getAllBreeds = async () => {
+const getAllBreeds = async (name) => {
   const { data } = await axios(URL);
 
   // Obtiene todos los perros de la API
@@ -77,7 +77,15 @@ const getAllBreeds = async () => {
     return 0;
   });
 
-  return [...breedsAPINames, ...breedsDB];
+  const allBreeds = [...breedsAPINames, ...breedsDB];
+
+  if (name) {
+    return allBreeds.filter((breed) =>
+      breed.name.toLowerCase().includes(name.toLowerCase())
+    );
+  }
+
+  return allBreeds;
 };
 
 module.exports = getAllBreeds;

@@ -4,6 +4,7 @@ import {
   GET_TEMPERAMENTS,
   FILTER_BY_TEMP,
   FILTER_BY_ORIGIN,
+  SET_CURRENT_PAGE,
   SORT_BY,
 } from "./actions/types";
 
@@ -15,6 +16,7 @@ const initialState = {
   original_breeds: [],
   tempFilterOn: false,
   origFilterOn: false,
+  currentPage: 1,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -115,6 +117,11 @@ const rootReducer = (state = initialState, action) => {
         };
       }
       break;
+    case SET_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.payload,
+      };
 
     default:
       return { ...state };

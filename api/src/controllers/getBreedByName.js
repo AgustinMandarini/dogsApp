@@ -5,7 +5,7 @@ const { Op } = require("sequelize");
 const URL = "https://api.thedogapi.com/v1/breeds/search?q=";
 
 const getBreedByName = async (name) => {
-  const breedDB = await Dog.findOne({
+  const breedDB = await Dog.findAll({
     where: {
       name: {
         [Op.iLike]: name + "%",
