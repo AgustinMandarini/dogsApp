@@ -4,6 +4,7 @@ import style from "./LandingPage.module.css";
 
 const LandingPage = (props) => {
   const navigate = useNavigate();
+
   return (
     <div className={style.background}>
       <div className={style.welcomeContainer}>

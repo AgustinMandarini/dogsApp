@@ -7,6 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 import store from "./redux/store";
 import { getAllBreeds } from "./redux/actions/actions";
 import { Provider } from "react-redux";
+import { Auth0ProviderWithNavigate } from "../src/components/Authentication/auth0-provider-with-navigate";
 
 // Esta linea a continuacion permite traer todas las breeds SOLO UNA VEZ, cuando se inicia la aplicacion, y de esta forma lograr que los
 // filtros persistan y no se sobrescriban. Anteriormente, esta linea estaba en el useEffect del componente que renderiza, pero
@@ -17,7 +18,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <Auth0ProviderWithNavigate>
+          <App />
+        </Auth0ProviderWithNavigate>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,
