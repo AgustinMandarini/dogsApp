@@ -1,7 +1,7 @@
 const validation = (userData) => {
   // Esta regex acepta todo el alfabeto may y min de la a-z, el caracter "-" y todos los caracteres
   // especiales de todos los idiomas, como ñ, acentos, y demas
-  const regexName = /^[A-Za-z\u00C0-\u024F\u1E00-\u1EFF\u0300-\u036F\s\-]+$/gu;
+  const regexName = /^[A-Za-z\u00C0-\u024F\u1E00-\u1EFF\u0300-\u036F\s-]+$/gu;
   const regexImage = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/;
 
   let errors = {};

@@ -8,7 +8,7 @@ import {
   SORT_BY,
   SET_CURRENT_PAGE,
 } from "./types";
-const URL = process.env.REACT_APP_URL;
+const URL = process.env.REACT_APP_API_SERVER_URL;
 
 const getAllBreeds = () => {
   const endpoint = `${URL}/dogs`;

@@ -8,7 +8,7 @@ import {
   sortBy,
 } from "../../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export default function Navbar() {
   const dispatch = useDispatch();

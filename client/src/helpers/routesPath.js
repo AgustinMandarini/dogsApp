@@ -3,4 +3,5 @@ export const ROUTES = {
   HOME: "/home",
   NEW_BREED: "/newBreed",
   DETAIL: "/detail/:id",
+  PROFILE: "/profile",
 };

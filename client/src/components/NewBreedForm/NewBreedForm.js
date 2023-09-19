@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getTemperaments } from "../../redux/actions/actions";
 import createNewBreed from "../../helpers/createNewBreed";

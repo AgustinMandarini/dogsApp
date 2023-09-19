@@ -1,5 +1,5 @@
 import axios from "axios";
-const REACT_APP_URL = process.env.REACT_APP_URL;
+const REACT_APP_API_SERVER_URL = process.env.REACT_APP_API_SERVER_URL;
 
 const createNewBreed = async ({
   name,
@@ -9,7 +9,7 @@ const createNewBreed = async ({
   life_span,
   temperaments,
 }) => {
-  const endpoint = `${REACT_APP_URL}/dogs`;
+  const endpoint = `${REACT_APP_API_SERVER_URL}/dogs`;
   const breedObject = {
     name,
     image,
